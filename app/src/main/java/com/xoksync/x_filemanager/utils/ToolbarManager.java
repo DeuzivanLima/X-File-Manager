@@ -21,12 +21,10 @@ public class ToolbarManager {
         toolbar.inflateMenu(menu_id);
         toolbar.setPadding(128 + 24, 0, 0, 0);
         toolbar.setTitle("X-File Manager");
-        toolbar.setSubtitle("Disk: 47GB/128GB");
     }
 
     public Context getContext() {
-        return context;
-    }
+        return context;}
 
     public void setContext(Context context) {
         this.context = context;
