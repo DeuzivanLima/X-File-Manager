@@ -19,13 +19,13 @@ import com.xoksync.x_filemanager.activity.MainActivity;
 
 public class PermissionRequest {
     public static void full(Activity activity) {
-        SharedPreferences preferences = activity.getSharedPreferences("permission_granted", Context.MODE_PRIVATE);
+        SharedPreferences preferences = activity.getSharedPreferences(Preferences.DATABASE_PERMISSION_ID, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
         if(SDK_INT > 33) {
             ActivityCompat.requestPermissions(activity, new String[] {Manifest.permission.READ_MEDIA_AUDIO, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO}, 100);
         }
-        if (SDK_INT >= Build.VERSION_CODES.R && preferences.getBoolean("CAN_ACCESS_FILE", false)) {
+        if (SDK_INT >= Build.VERSION_CODES.R && preferences.getBoolean(Preferences.CAN_ACCESS_FILES, false)) {
             if (Environment.isExternalStorageManager()) {
                 activity.startActivity(new Intent(activity, MainActivity.class));
             } else {
